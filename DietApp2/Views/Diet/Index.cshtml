@@ -1,0 +1,82 @@
+﻿@model IEnumerable< DietApp2.Models.Diet>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Diet Program List</title>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Diet Program List</h3>
+        </div>
+
+        <div class="panel-body">
+            @Html.ActionLink("New Add", "Add", null, new {@class="btn btn-primary"})
+            <hr/>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="width:3%;"></th>
+                        <th style="width:30%;">Meal</th>
+                        <th style="width:55%;">Meal Content </th>
+                        <th style="width:10%;">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in Model)
+                    {
+                        if (i.İsCompleted)
+                        {
+                            <tr class="success">
+                                <td>
+                                    @if (i.İsCompleted)
+                                    {
+                                        <span class="glyphicon glyphicon-check"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="glyphicon glyphicon-remove"></span>
+
+                                    }
+                                </td>
+                                <td>@i.meal</td>
+                                <td>@i.comment</td>
+                                <td>@i.date.ToShortDateString()</td>
+                            </tr>
+
+                        }
+                        else
+                        {
+                            <tr class="warning">
+                                <td>
+                                    @if (i.İsCompleted)
+                                    {
+                                        <span class="glyphicon glyphicon-check"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="glyphicon glyphicon-remove"></span>
+
+                                    }
+                                </td>
+                                <td>@i.meal</td>
+                                <td>@i.comment</td>
+                                <td>@i.date.ToShortDateString()</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>
